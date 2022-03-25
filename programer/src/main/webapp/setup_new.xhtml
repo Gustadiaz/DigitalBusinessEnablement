@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<p:tabMenu activeIndex="#{param.i}">
+			<p:menuitem value="Home" icon="pi pi-fw pi-home">
+			</p:menuitem>
+			<p:menuitem value="Setups" icon="pi pi-fw pi-desktop">
+			</p:menuitem>
+			<p:menuitem value="Profile" icon="pi pi-fw pi-user">
+			</p:menuitem>
+		</p:tabMenu>
+
+	</h:form>
+	<h1>New Setup</h1>
+
+	<h:form>
+
+		<h:panelGrid>
+			<h:outputLabel value="Name" />
+			<h:inputText value="" />
+			<h:outputLabel value="Description" />
+			<h:inputTextarea value="" />
+			<h:outputLabel value="Price" />
+			<h:inputText value="" />
+			<div class="card">
+				<h:form>
+					<p:growl id="message" showDetail="true" />
+
+					<p:commandButton value="Save" action="#{confirmView.confirm}"
+						update="message" styleClass="p-mr-2" icon="pi pi-check">
+						<p:confirm header="Confirmation"
+							message="Are you sure you want to save?"
+							icon="pi pi-exclamation-triangle" />
+					</p:commandButton>
+
+					<p:commandButton value="Cancel" action="#{confirmView.delete}"
+						update="message" styleClass="ui-button-danger" icon="pi pi-times">
+						<p:confirm header="Confirmation"
+							message="Do you want to cancel this record?"
+							icon="pi pi-info-circle" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						responsive="true" width="350">
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no ui-button-flat" />
+						<p:commandButton value="Yes" type="button"
+							styleClass="ui-confirmdialog-yes" />
+					</p:confirmDialog>
+				</h:form>
+			</div>
+		</h:panelGrid>
+	</h:form>
+
+
+</body>
+</html>
